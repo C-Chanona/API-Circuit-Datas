@@ -17,7 +17,7 @@ class DatasController {
             try {
                 const { humidity, temperature, pressure } = req.body;
                 yield this.circuitData.sendCircuitData(humidity, temperature, pressure);
-                res.status(200).json();
+                res.status(200).json({ message: "OK" });
             }
             catch (error) {
                 res.status(500).json({ error: "Internal Server error" });
