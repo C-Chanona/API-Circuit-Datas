@@ -1,0 +1,15 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.emailController = exports.datasController = void 0;
+const DatasController_1 = require("../controllers/DatasController");
+const EmailsController_1 = require("../controllers/EmailsController");
+const UserRepository_1 = require("../entity_manager/UserRepository");
+const CircuitRepository_1 = require("../entity_manager/CircuitRepository");
+const RegisterUserUseCase_1 = require("../../application/RegisterUserUseCase");
+const CircuitDataUseCase_1 = require("../../application/CircuitDataUseCase");
+const usersRep = new UserRepository_1.UsersRepository();
+const circuitRep = new CircuitRepository_1.CircuitRepository();
+const newUser = new RegisterUserUseCase_1.RegisterUserUseaCase(usersRep);
+const extractDatas = new CircuitDataUseCase_1.CircuitDataUseCase(circuitRep);
+exports.datasController = new DatasController_1.DatasController(extractDatas);
+exports.emailController = new EmailsController_1.EmailsController(newUser);
